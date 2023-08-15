@@ -29,8 +29,6 @@ const TogglableBlog = React.forwardRef((props, ref) => {
 
 TogglableBlog.propTypes = {
   label: PropTypes.string.isRequired,
-  blog: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default TogglableBlog;

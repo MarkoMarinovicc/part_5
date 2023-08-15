@@ -15,12 +15,16 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
   return (
     <div style={blogStyle}>
       {blog.url && <span>{blog.url} </span>}
-      <span>
-        {blog.liked.length}
-        <button onClick={handleLike}>
-          {blog.liked.includes(blog.user[0].id) ? "unlike" : "like"}
-        </button>
-      </span>{" "}
+      {blog.liked && (
+        <span>
+          {blog.liked?.length}
+          <button onClick={handleLike}>
+            {blog.user && blog.liked.includes(blog.user[0].id)
+              ? "unlike"
+              : "like"}
+          </button>
+        </span>
+      )}{" "}
       {blog.author && <span>{blog.author}</span>}
       {blog.user && (
         <div>
@@ -37,8 +41,6 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
-  handleLike: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
 };
 
 export default Blog;
