@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Blog = ({ blog, handleLike, handleDelete }) => {
+const Blog = ({ blog, handleLike, handleDelete,user }) => {
   const blogStyle = {
     display: "flex",
     flexDirection: "column",
@@ -18,7 +18,14 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
       {blog.liked && (
         <span>
           {blog.liked?.length}
-          <button onClick={handleLike}>
+          <button
+            id={
+              blog.user && blog.liked.includes(blog.user[0].id)
+                ? "unlike"
+                : "like"
+            }
+            onClick={handleLike}
+          >
             {blog.user && blog.liked.includes(blog.user[0].id)
               ? "unlike"
               : "like"}
@@ -34,7 +41,11 @@ const Blog = ({ blog, handleLike, handleDelete }) => {
           ))}
         </div>
       )}
-      <button onClick={handleDelete}>Remove</button>
+      {user.username===blog.user[0].username ? (
+        <button id="remove" onClick={handleDelete}>
+          Remove
+        </button>
+      ) : null}
     </div>
   );
 };

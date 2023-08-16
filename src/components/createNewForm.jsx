@@ -30,6 +30,7 @@ const CreateNewForm = ({ setBlogs, setNotify }) => {
           type="text"
           value={title}
           name="Title"
+          id="title"
           placeholder="Title"
           onChange={({ target }) => setTitle(target.value)}
         ></input>
@@ -37,6 +38,7 @@ const CreateNewForm = ({ setBlogs, setNotify }) => {
           type="text"
           value={author}
           name="Author"
+          id="author"
           placeholder="Author"
           onChange={({ target }) => setAuthor(target.value)}
         ></input>
@@ -44,10 +46,11 @@ const CreateNewForm = ({ setBlogs, setNotify }) => {
           type="text"
           value={url}
           name="URL"
+          id="url"
           placeholder="URL"
           onChange={({ target }) => setUrl(target.value)}
         ></input>
-        <button onClick={handleCreate}>create</button>
+        <button id="create" onClick={handleCreate}>create</button>
       </form>
     </div>
   );

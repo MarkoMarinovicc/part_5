@@ -45,15 +45,12 @@ const App = () => {
       setPassword("");
     } catch (exception) {
       setErrormsg(exception.response.data.error);
-      setTimeout(() => {
-        setErrormsg("");
-      }, 2000);
     }
   };
   const msgErrorStyling = {
     padding: "12px",
     backgroundColor: "grey",
-    color: "red",
+    color: "rgb(255, 0, 0)",
     border: "1px solid red",
     borderRadius: "4px",
   };
@@ -87,6 +84,7 @@ const App = () => {
   const blogsSOrted = blogs.sort((a, b) => b.liked.length - a.liked.length);
   return (
     <div>
+      <h1>Blog</h1>
       {user === null ? (
         <div>
           {errormsg && <p style={msgErrorStyling}>{errormsg}</p>}
@@ -120,10 +118,11 @@ const App = () => {
           </Togglable>
 
           <h2>blogs</h2>
-          {blogsSOrted.map((blog) => (
-            <TogglableBlog key={blog.id} blog={blog.title} label="view">
+          {blogsSOrted.map((blog,index) => (
+            <TogglableBlog key={blog.id} blog={blog.title} label="view" index={index}>
               <Blog
                 blog={blog}
+                user={user}
                 handleLike={() => handleLike(blog.id)}
                 handleDelete={() => handleDelete(blog.id, blog.title)}
               />
